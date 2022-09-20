@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{ jsonData }}</h1>
+    <p v-for="name in names">{{ name.value }}</p>
   </div>
 </template>
 
@@ -8,15 +8,23 @@
 export default {
   name: "IndexPage",
   async asyncData({ route, store }) {
-    const data = await fetch(`${process.env.BASE_URL}/countries.json`).then(
-      (res) => res.json()
+    const data = await fetch(`${process.env.BASE_URL}/data.json`).then((res) =>
+      res.json()
     );
-    return { jsonData: data };
+    const headerNames = data.sheets.IP_LOANS_0.colHeaderData.dataTable[0];
+    return { jsonData: data, names: headerNames };
   },
   data() {
     return {
-      jsonData: {},
+      jsonData: [],
+      names: [],
     };
+  },
+  mounted() {
+    const names = this.jsonData.sheets.IP_LOANS_0.colHeaderData.dataTable[0];
+
+    // console.log(names);
+    return { names: names };
   },
 };
 </script>
