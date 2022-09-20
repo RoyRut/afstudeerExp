@@ -1,0 +1,13 @@
+@import "~/assets/scss/normalize.css";
+/* @import "~/assets/scss/animations.scss"; */
+@import "~/assets/scss/base.scss";
+/*  @import "~/assets/scss/button.scss"; */
+/* @import "~/assets/scss/colors.scss"; */
+@import "~/assets/scss/font-family.scss";
+/* @import "~/assets/scss/form.scss"; */
+@import "~/assets/scss/grid.scss";
+@import "~/assets/scss/positions.scss";
+/* @import "~/assets/scss/texts.scss"; */
+/*  @import "~/assets/scss/utils.scss"; */
+@import "~/assets/scss/variables.scss";
+/* // hier importeer ik al mijn css zodat het samen gecompliled word in mijn main css file. de opbouw hiervan is bedoeld zodat ik straks mjin voledige portfolio hier bij kan maken. */
