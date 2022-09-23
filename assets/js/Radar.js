@@ -1,14 +1,19 @@
 let p5;
 
 let radius = 50;
+let textSpace = 200;
+let enter = 90;
+let next = 50;
 
 var names;
 var valueSet;
+var cleanValue;
 var done = false;
 
 console.log("ik ben Rader.js");
 /** fetch local json */
 fetch("./data.json")
+  /**testem of de eerst then nog nodig is */
   .then((res) => res.json())
   .then((data) => inputData(data));
 
@@ -31,44 +36,39 @@ export function main(_p5) {
   };
 
   p5.draw = (_) => {
-    // p5.point(300, 300);
-    // p5.strokeWeight(10);
-    // p5.stroke(0);
     if (done == false) {
-      for (let i = 3; i < 4; i++) {
-        console.log(names[i].name);
+      for (let i = 22; i < 26; i++) {
+        var text = names[i].name;
+        p5.stroke(0, 0, 0);
+        p5.strokeWeight(1);
+        p5.textSize(30);
+        p5.text(text, 0, enter);
+        console.log(enter);
+
         for (let x = 0; x < valueSet.length; x++) {
           var value = valueSet[x][i].value;
-          var valueToString = value.toString().slice(5);
-          var cleanValue = +valueToString;
-          p5.strokeWeight(cleanValue * 3);
-          p5.stroke(2 * cleanValue, 2 * cleanValue, 2 * cleanValue, 100);
-          p5.point(cleanValue * 3, 150);
-          // p5.textSize(30);
-          // p5.fill(255, 0, 0);
-          // p5.text(value, 150, cleanValue * 3);
+          getValue(value);
 
-          console.log(cleanValue);
+          p5.strokeWeight(cleanValue);
+          p5.stroke(2 * cleanValue, 0, 0, 100);
+          p5.point(textSpace + cleanValue * 2, enter);
+
           if (valueSet.length) {
             done = true;
           }
         }
+        enter += 150;
       }
     }
   };
 
-  function getValue() {
-    for (let i = 2; i < 3; i++) {
-      console.log(names[i].name);
-      for (let x = 0; x < valueSet.length; x++) {
-        var value = valueSet[x][i].value;
-        var valueToString = value.toString().slice(5);
-        var cleanValue = +valueToString;
-        console.log(cleanValue);
-        if (valueSet.length) {
-          done = true;
-        }
-      }
-    }
+  function getValue(value) {
+    // var valueToString = value.toString().slice(5);
+    cleanValue = +value;
+    // Number(cleanValue);
+    // console.log(cleanValue + " " + "getValeu");
+
+    let map = p5.map(cleanValue, 100000, 1000000, 0, 400);
+    cleanValue = map;
   }
 }
