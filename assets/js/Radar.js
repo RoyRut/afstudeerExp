@@ -24,6 +24,7 @@ let inputData = (data) => {
 };
 
 export function main(_p5) {
+  testFunc();
   p5 = _p5;
 
   p5.setup = (_) => {
@@ -71,4 +72,8 @@ export function main(_p5) {
     let map = p5.map(cleanValue, 100000, 1000000, 0, 400);
     cleanValue = map;
   }
+}
+
+function testFunc() {
+  alert("ik ben een test");
 }
